@@ -2,10 +2,11 @@
   "name": "sns",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --watch src/index.js"
+    "dev": "node --watch src/index.js",
+    "build": "babel src --out-dir dist --copy-files"
   },
   "keywords": [],
   "author": "",
@@ -18,5 +19,12 @@
     "mongoose": "^8.1.1",
     "morgan": "^1.10.0",
     "nodemailer": "^6.9.9"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.23.9",
+    "@babel/core": "^7.23.9",
+    "@babel/preset-env": "^7.23.9",
+    "webpack": "^5.90.1",
+    "webpack-cli": "^5.1.4"
   }
 }
