@@ -12,7 +12,7 @@
             "dest": "dist/index.js"
         },
         {
-            "src": "/routes/(.*)",
+            "src": "/(.*)",
             "dest": "dist/routes/userRoutes.js"
         }
     ]
