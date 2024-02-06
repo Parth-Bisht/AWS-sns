@@ -22,6 +22,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
+  console.log("HELLO WORLD");
+  console.log(req);
   return res.status(200).json({ msg: "Hello World" });
 });
 

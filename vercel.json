@@ -14,6 +14,10 @@
         {
             "src": "/(.*)",
             "dest": "dist/routes/userRoutes.js"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "dist/routes/emailSender.js"
         }
     ]
 }
