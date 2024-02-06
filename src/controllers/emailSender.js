@@ -14,16 +14,18 @@ const transporter = nodeMailer.createTransport({
 });
 
 module.exports.emailSender = async (req, res) => {
-  console.log(req.body);
+  console.log(req.body, "REQ BODY");
   try {
     const { email } = req.body;
+    console.log(req.body, "REQ BODY 2");
+    console.log(email, "EMAIL");
     const response = {
       status: false,
       info: null,
     };
     const userObj = await UserModel.findOne({ email });
     if (userObj && userObj.emailBounceCounter < 3) {
-      console.log(userObj);
+      console.log(userObj, "USEROBJ");
       const info = await transporter.sendMail({
         from: process.env.AWS_SES_FROM_ADDRESS, // Sender address, this could be SES verified identity
         to: email, // Receivers email address
@@ -31,7 +33,7 @@ module.exports.emailSender = async (req, res) => {
         text: "Hello world?", // Plain text body
         html: "<b>Hello world?</b>", // HTML body
       });
-      console.log(info);
+      console.log(info, "INFO");
       response.status = true;
       response.info = info;
     }
