@@ -2,6 +2,7 @@ const UserModel = require("../models/users.model");
 
 module.exports.emailBounce = async (req, res) => {
   try {
+    console.log("Webhook body", req.body);
     const { notificationType, bounce } = req.body;
     if (notificationType === "Bounce") {
       const emailAddress = bounce["bounced Recipients"][0]["emailAddress"];
