@@ -1,14 +1,17 @@
 const UserModel = require("../models/users.model");
 
 module.exports.emailBounce = async (req, res) => {
+  console.log(req.body, "Webhook");
   try {
     console.log("Webhook body", req.body);
     const { notificationType, bounce } = req.body;
+    console.log(notificationType, bounce);
     if (notificationType === "Bounce") {
       const emailAddress = bounce["bounced Recipients"][0]["emailAddress"];
       const userObj = await UserModel.findOne({
         email: emailAddress,
       });
+      console.log(userObj);
       if (userObj) {
         userObj.emailBounceCounter = userObj.emailBounceCounter + 1;
         await userObj.save();
