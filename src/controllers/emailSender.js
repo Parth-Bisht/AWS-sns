@@ -14,6 +14,7 @@ const transporter = nodeMailer.createTransport({
 });
 
 module.exports.emailSender = async (req, res) => {
+  console.log(req.body);
   try {
     const { email } = req.body;
     const response = {
