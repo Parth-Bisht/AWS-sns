@@ -2,7 +2,9 @@ const UserModel = require("../models/users.model");
 
 module.exports.emailBounce = async (req, res) => {
   console.log(req.body, "Webhook");
+  console.log("Outside Try Block");
   try {
+    console.log("Inside Try Block");
     console.log("Webhook body", req.body);
     const { notificationType, bounce } = req.body;
     console.log(notificationType, bounce);
@@ -17,9 +19,10 @@ module.exports.emailBounce = async (req, res) => {
         await userObj.save();
       }
     }
-    res.status(200).json(req.body);
+    return res.status(200).json(req.body);
   } catch (error) {
-    console.error(error);
+    console.log("Inside error block");
+    console.log(error);
     return res.status(400).json({ msg: error, status: false });
   }
 };
