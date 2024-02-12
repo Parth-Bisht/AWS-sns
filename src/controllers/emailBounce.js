@@ -6,6 +6,7 @@ module.exports.emailBounce = async (req, res) => {
   try {
     console.log("Inside Try Block");
     console.log("Webhook body", req.body);
+    const test = req.body;
     const { notificationType, bounce } = req.body;
     console.log(notificationType, bounce);
     if (notificationType === "Bounce") {
@@ -19,7 +20,7 @@ module.exports.emailBounce = async (req, res) => {
         await userObj.save();
       }
     }
-    return res.status(200).json(req.body);
+    return res.status(200).json({ data: test, notificationType, bounce });
   } catch (error) {
     console.log("Inside error block");
     console.log(error);
