@@ -19,6 +19,9 @@ module.exports.emailSender = async (req, res) => {
     const { email } = req.body;
     console.log(req.body, "REQ BODY 2");
     console.log(email, "EMAIL");
+    if (email) {
+      console.log(email);
+    }
     const response = {
       status: false,
       info: null,
@@ -33,7 +36,7 @@ module.exports.emailSender = async (req, res) => {
         text: "Hello world?", // Plain text body
         html: "<b>Hello world?</b>", // HTML body
       });
-      console.log(info, "INFO");
+      // console.log(info, "INFO");
       response.status = true;
       response.info = info;
     }
